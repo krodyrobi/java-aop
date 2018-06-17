@@ -1,0 +1,22 @@
+package com.krotz.aop.aspects;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
+
+@Aspect
+public class A_LoggingAspect {
+    @Pointcut("execution(* com.krotz.aop.business..*(..))")
+    public void anyBusinessMethodsAnyArgs() {}
+
+    @Before("anyBusinessMethodsAnyArgs()")
+    public void log(JoinPoint joinPoint) {
+        final String args = Arrays.stream(joinPoint.getArgs()).map(Object::toString).collect(Collectors.joining(","));
+        System.out.println("Calling " + joinPoint.getSignature() + " " + args);
+    }
+}

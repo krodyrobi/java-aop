@@ -1,0 +1,16 @@
+<aspectj>
+    <aspects>
+        <aspect name="com.krotz.aop.aspects.A_LoggingAspect"/>
+        <aspect name="com.krotz.aop.aspects.B_CachingAspect"/>
+        <aspect name="com.krotz.aop.aspects.C_TimingAspect"/>
+        <aspect name="com.krotz.aop.aspects.AuthorizationAspect"/>
+        <aspect name="com.krotz.aop.aspects.ErrorTranslationAspect"/>
+        <aspect name="com.krotz.aop.aspects.TransactionAspect"/>
+
+        <!--<weaver options="-verbose -showWeaveInfo -debug">-->
+        <!-- TODO remove once explained -->
+        <weaver>
+            <include within="com.krotz.aop..*"/>
+        </weaver>
+    </aspects>
+</aspectj>
