@@ -11,12 +11,13 @@ import java.util.stream.Collectors;
 
 @Aspect
 public class A_LoggingAspect {
-    @Pointcut("execution(* com.krotz.aop.business..*(..))")
-    public void anyBusinessMethodsAnyArgs() {}
+  @Pointcut("execution(* com.krotz.aop.C_SampleWithAop.*(..))")
+  public void targetClassMethods() {
+  }
 
-    @Before("anyBusinessMethodsAnyArgs()")
-    public void log(JoinPoint joinPoint) {
-        final String args = Arrays.stream(joinPoint.getArgs()).map(Object::toString).collect(Collectors.joining(","));
-        System.out.println("Calling " + joinPoint.getSignature() + " " + args);
-    }
+  @Before("targetClassMethods()")
+  public void log(JoinPoint joinPoint) {
+    final String args = Arrays.stream(joinPoint.getArgs()).map(Object::toString).collect(Collectors.joining(","));
+    System.out.println("Calling " + joinPoint.getSignature() + " " + args);
+  }
 }

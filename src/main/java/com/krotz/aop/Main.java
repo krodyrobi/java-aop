@@ -1,31 +1,46 @@
 package com.krotz.aop;
 
-import com.krotz.aop.business.Account;
-import com.krotz.aop.business.Session;
-
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        final int krotzId = 1;
-        final int otherId = 2;
+  public static void main(String[] args) throws InterruptedException {
+    noAop();
+    decorator();
+    aop();
+  }
 
-        final Account joshua = new Account(krotzId, 10);
-        final Account henry = new Account(otherId, 1000);
+  private static void noAop() throws InterruptedException {
+    System.out.println("----- START NO AOP -----");
+    final A_SampleNoAop noAop = new A_SampleNoAop();
 
-        final Session session = Session.getInstance();
-        session.setActiveUserId(otherId);
+    System.out.println(noAop.heavyCall());
+    System.out.println(noAop.heavyCall());
 
-//        joshua.getBalance();
+  }
 
-        System.out.println(joshua.heavyRandom());
-        System.out.println(joshua.heavyRandom());
+  private static void decorator() throws InterruptedException {
+    System.out.println("----- START DECORATOR -----");
 
-        try {
-            joshua.failingOperation();
-        } catch(Exception e) {
-            System.out.println("Caught " + e.getClass() + " message " + e.getMessage());
-        }
-    }
+    Component concrete = new ConcreteComponent();
+    Decorator timer = new TimerDecorator(concrete);
+    Decorator logger = new LoggerDecorator(timer);
 
-    // loadtime compile post-compile
-    // providers, your stuff, if you have already compiled stuff and choose to merge them
+    logger.operation();
+
+  }
+
+  private static void aop() throws InterruptedException {
+    System.out.println("----- START AOP -----");
+
+    final C_SampleWithAop aop = new C_SampleWithAop();
+
+    System.out.println(aop.heavyCall());
+    System.out.println(aop.heavyCall());
+  }
+
+
+  // TODO check this
+  //    Autorization
+  //  Error translation
+  //    Transaction
+  // loadtime compile post-compile
+  // providers, your stuff, if you have already compiled stuff and choose to merge them
 }
