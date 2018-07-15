@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 @Aspect
 public class A_LoggingAspect {
-  @Pointcut("execution(* com.krotz.aop.C_SampleWithAop.*(..))")
+  @Pointcut("execution(* com.krotz.aop.D_SampleWithAop.*(..))")
   public void targetClassMethods() {
   }
 

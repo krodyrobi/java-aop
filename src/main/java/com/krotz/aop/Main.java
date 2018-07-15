@@ -3,9 +3,11 @@ package com.krotz.aop;
 public class Main {
   public static void main(String[] args) throws InterruptedException {
     noAop();
+    inheritance();
     decorator();
     aop();
   }
+
 
   private static void noAop() throws InterruptedException {
     System.out.println("----- START NO AOP -----");
@@ -13,7 +15,14 @@ public class Main {
 
     System.out.println(noAop.heavyCall());
     System.out.println(noAop.heavyCall());
+  }
 
+  private static void inheritance() throws InterruptedException {
+    System.out.println("----- START INHERITANCE -----");
+
+    final Subject s = new SubjectWithLoggingAndCacheAndTiming();
+    System.out.println(s.heavyCall());
+    System.out.println(s.heavyCall());
   }
 
   private static void decorator() throws InterruptedException {
@@ -30,17 +39,9 @@ public class Main {
   private static void aop() throws InterruptedException {
     System.out.println("----- START AOP -----");
 
-    final C_SampleWithAop aop = new C_SampleWithAop();
+    final D_SampleWithAop aop = new D_SampleWithAop();
 
     System.out.println(aop.heavyCall());
     System.out.println(aop.heavyCall());
   }
-
-
-  // TODO check this
-  //    Autorization
-  //  Error translation
-  //    Transaction
-  // loadtime compile post-compile
-  // providers, your stuff, if you have already compiled stuff and choose to merge them
 }
