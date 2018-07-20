@@ -4,7 +4,7 @@ import com.krotz.aop.aspects.annotations.Timed;
 
 import java.util.Random;
 
-class D_SampleWithAop {
+class D_SampleAOP {
   @Timed
   int heavyCall() throws InterruptedException {
     Thread.sleep(3000);

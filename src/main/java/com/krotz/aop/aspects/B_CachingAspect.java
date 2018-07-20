@@ -12,7 +12,7 @@ public class B_CachingAspect {
   private final static Map<String, Object> cache = new ConcurrentHashMap<>();
 
   // TODO note the .. = 0 or more levels and (..) 0 or more arguments
-  @Around("execution(* *..D_SampleWithAop.heavy*(..))")
+  @Around("execution(* *..D_SampleAOP.heavy*(..))")
   public Object cache(ProceedingJoinPoint pjp) throws Throwable {
     final String targetKey = pjp.getSignature().toString();
 

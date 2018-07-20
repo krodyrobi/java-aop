@@ -2,19 +2,19 @@ package com.krotz.aop;
 
 public class Main {
   public static void main(String[] args) throws InterruptedException {
-    noAop();
+    classic();
     inheritance();
     decorator();
     aop();
   }
 
-
-  private static void noAop() throws InterruptedException {
+  private static void classic() throws InterruptedException {
     System.out.println("----- START NO AOP -----");
-    final A_SampleNoAop noAop = new A_SampleNoAop();
+    final A_SampleClassic noAop = new A_SampleClassic();
 
     System.out.println(noAop.heavyCall());
     System.out.println(noAop.heavyCall());
+
   }
 
   private static void inheritance() throws InterruptedException {
@@ -39,7 +39,7 @@ public class Main {
   private static void aop() throws InterruptedException {
     System.out.println("----- START AOP -----");
 
-    final D_SampleWithAop aop = new D_SampleWithAop();
+    final D_SampleAOP aop = new D_SampleAOP();
 
     System.out.println(aop.heavyCall());
     System.out.println(aop.heavyCall());

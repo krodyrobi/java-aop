@@ -5,11 +5,13 @@ import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
 
-class A_SampleNoAop {
+class A_SampleClassic {
   private final static Map<String, Object> cache = new ConcurrentHashMap<>();
 
+  // TODO can you guess what it does in 5 seconds or less?
+
   int heavyCall() throws InterruptedException {
-    String key = "com.krotz.aop.business.A_SampleNoAop.heavyCall()";
+    String key = "com.krotz.aop.business.A_SampleClassic.heavyCall()";
     System.out.println("Calling " + key);
 
     if (cache.containsKey(key)) {
@@ -31,4 +33,11 @@ class A_SampleNoAop {
       System.out.println(elapsedTime + " milliseconds - " + key);
     }
   }
+
+  // TODO now imagine these lines duplicated everywhere -> Crosscutting concerns
+
+  /*
+    What are crosscutting concerns
+    Why split them from business logic
+  */
 }

@@ -2,6 +2,7 @@ package com.krotz.aop;
 
 import java.util.Random;
 
+
 interface Component {
   int operation() throws InterruptedException;
 }

@@ -7,9 +7,8 @@ import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 public class C_TimingAspect {
-  @Pointcut("execution(* com.krotz.aop.D_SampleWithAop.*(..))")
-  public void targetClassMethods() {
-  }
+  @Pointcut("execution(* com.krotz.aop.D_SampleAOP.*(..))")
+  public void targetClassMethods() {}
 
   //    @annotation is already a pointcut can combine more granular pointcuts
   //    @Around("@annotation(com.krotz.aop.aspects.annotations.Timed)")    // TODO what will happen with this? how many calls?
